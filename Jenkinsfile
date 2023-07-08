@@ -16,31 +16,32 @@ pipeline {
         }
 
 
-        // stage("SonarQube analysis") {
-        //     agent any
+        stage("SonarQube analysis") {
+            agent any
 
-        //     when {
-        //         anyOf {
-        //             branch 'feature/*'
-        //             branch 'main'
-        //         }
-        //     }
-        //     steps {
-        //         withSonarQubeEnv('Sonar') {
-        //             sh 'mvn sonar:sonar'
-        //         }
-        //     }
-        // }
+            when {
+                 
+                   // branch 'feature/*'
+                    branch 'main'
+                
+            }
+            steps {
+                withSonarQubeEnv('Sonar') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
 
         // stage("Quality Gate") {
         //     steps {
         //         script {
         //             try {
-        //                 timeout(time: 10, unit: 'MINUTES') {
-        //                     waitForQualityGate abortPipeline: true
-        //                 }
-        //             }
-        //             catch (Exception ex) {
+        //                 timeout(time: 10, unit: 'MINUTES') 
+                        //{
+                        //     waitForQualityGate abortPipeline: true
+                        // }
+                    }
+                   // catch (Exception ex) {
 
         //             }
         //         }
